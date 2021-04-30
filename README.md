@@ -12,13 +12,13 @@
 * You need to install:
 
 ```
-run pip install spacy for spacy itself
+pip install spacy for spacy itself
 
 pip install pandas
 
 pip install -U scikit-learn
 
-run python -m spacy download en_core_web_sm
+python -m spacy download en_core_web_sm
 ```
 
 ## REPOSITORY
