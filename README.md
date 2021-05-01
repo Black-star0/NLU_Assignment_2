@@ -23,4 +23,6 @@ python -m spacy download en_core_web_sm
 
 ## REPOSITORY
 
-This repository contains the notebook ```NLU_Project2.ipynb``` for the second assignment for the NLU course of 2020/2021.
+This repository contains the notebook ```NLU_Project_2.ipynb``` for the second assignment for the NLU course of 2020/2021.
+
+REPORT is inside the python project
