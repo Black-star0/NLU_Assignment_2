@@ -185,11 +185,9 @@ def get_ne(list_s):
       noun_chunk_i = 0
       for ne in doc.ents:
         group = []
-        first = ne.start #Start of the current NE
+        first = ne.start
         if first < noun_chunk[min(noun_chunk_i+1, len(noun_chunk)-1)] and first >= noun_chunk[noun_chunk_i]:
-          #The NE is part of a noun chunk that hasn't been added yet
           for tk in doc[noun_chunk[noun_chunk_i]:noun_chunk[noun_chunk_i+1]]:
-            #Only add the type if there is one and it hasn't been added to the group yet
             if tk.ent_type_ not in group and tk.ent_type_ != "": 
               group.append(tk.ent_type_)
           groups.append(sorted(group))
@@ -227,8 +225,8 @@ print('\n')
 def merge_compounds(doc):
 
   ne1 = []
-  dependency_compound = set() #to handle cases in which a token is in compound relation with multiple entities
-
+#when a token is in compound relation with multiple entities
+  dependency_compound = set() 
   for t in doc.ents:
     s = t.start
     e = t.end
@@ -243,7 +241,7 @@ def merge_compounds(doc):
           if s-1 not in dependency_compound:
             catch = True
             ne1.append(Span(doc, s-1, e, t.label_))
-            dependency_compound.add(s-1) #otherways I may write doc[s-1].ent_type_ = t.ent_type to embed the check naturally in the conditions already defined, but I preferred a different way to don't manually update the fields of the Token object
+            dependency_compound.add(s-1)
             break
 
         elif ((doc[min(e, len(doc)-1)].head == tok and doc[min(e, len(doc)-1)].dep_ == "compound" and 
